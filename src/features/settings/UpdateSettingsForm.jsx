@@ -18,7 +18,7 @@ function UpdateSettingsForm() {
   const { isUpdateing, updateSetting } = UseEditSetting()
 
   function handleBlur(e, field) {
-    const { value } = e.target
+    const { value } = e?.target
     if (!value) return;
     updateSetting({
       [field]: value

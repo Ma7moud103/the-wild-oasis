@@ -12,7 +12,7 @@ import { UseUpdateCabin } from "./UseUpdateCabin";
 
 
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onClose }) {
   const { id: editId, ...editValues } = cabinToEdit
   const isEditSession = Boolean(editId)
   const { register, handleSubmit, reset, getValues, formState } = useForm({
@@ -34,13 +34,16 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     if (isEditSession) editCabin({ newCabinData: { ...data, image }, id: editId })
 
     else createCabin({ ...data, image: image }, {
-      onSuccess: () => reset()
+      onSuccess: () => {
+        onClose?.()
+        reset()
+      }
     })
   }
 
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} type={onClose ? "model" : "regular"}>
       <FormRow label={'Cabin name'} error={errors?.name?.message}>
         <Input disabled={isWorking} type="text" id="name" {...register('name', {
           required: "input is required"
@@ -90,7 +93,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button onClick={() => onClose?.()} variation="secondary" type="reset">
           Cancel
         </Button>
         <Button disabled={isWorking}>{isEditSession ? "Edit Cabin" : "Create new cabin"}</Button>
