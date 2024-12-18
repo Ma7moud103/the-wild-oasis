@@ -7,9 +7,9 @@ export async function signup({ fullName, email, password }) {
     options: {
       data: {
         fullName,
-        avatar: "",
-      },
-    },
+        avatar: ""
+      }
+    }
   });
 
   if (error) throw new Error(error.message);
@@ -20,7 +20,7 @@ export async function signup({ fullName, email, password }) {
 export async function login({ email, password }) {
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
-    password,
+    password
   });
 
   if (error) throw new Error(error.message);
@@ -63,11 +63,12 @@ export async function updateCurrentUser({ password, fullName, avatar }) {
 
   if (storageError) throw new Error(storageError.message);
 
+  // https://yblweksvjcdornkzoghu.supabase.co/storage/v1/object/public/avatars/cabin-004.jpg?t=2024-12-18T10%3A30%3A18.358Z
   // 3. Update avatar in the user
   const { data: updatedUser, error: error2 } = await supabase.auth.updateUser({
     data: {
-      avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`,
-    },
+      avatar: `${supabaseUrl}/storage/v1/object/public/avatars/${fileName}`
+    }
   });
 
   if (error2) throw new Error(error2.message);

@@ -6,6 +6,10 @@ ${(props) => props.type === 'h1' && css`
     font-size: 3rem;
     font-weight:600;t`}
 
+    ${(props) => props.type === 'h4' && css`
+    font-size: 3rem;
+    text-align: center;
+    font-weight:600;`}
 
 ${(props) => props.type === 'h2' && css`
     font-size: 2rem;
@@ -17,6 +21,9 @@ ${(props) => props.type === 'h2' && css`
 
 
     line-height:1.4;
+
+
 `
+
 
 export default Heading

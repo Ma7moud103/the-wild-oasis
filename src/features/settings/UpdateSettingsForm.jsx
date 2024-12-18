@@ -6,13 +6,16 @@ import Spinner from '../../ui/Spinner'
 import { UseEditSetting } from './UseEditSetting';
 function UpdateSettingsForm() {
 
-  const { settings: {
+  const { settings = {}, isLoading } = UseSettings()
+  console.log(settings)
+  const {
     minBookingLength,
     maxBookingLength,
     maxGuestsPerBooking,
     breakfastPrice
-  } = {}, isLoading } = UseSettings()
+  } = settings
   if (isLoading) return <Spinner />
+
 
 
   const { isUpdateing, updateSetting } = UseEditSetting()
