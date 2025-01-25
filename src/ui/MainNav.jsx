@@ -5,13 +5,21 @@ import {
   HiOutlineCog6Tooth
 } from 'react-icons/hi2'
 
-const NavList = styled.ul`
+export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  @media (max-width:${({ theme }) => (theme.breakpoints.desktop)}) {
+    display: flex;
+  width: 100%;
+  align-items: center;
+  justify-items:flex-start;
+}
+
 `;
 
-const StyledNavLink = styled(NavLink)`
+export const StyledNavLink = styled(NavLink)`
+
   &:link,
   &:visited {
     display: flex;
@@ -48,6 +56,10 @@ const StyledNavLink = styled(NavLink)`
   &.active:visited svg {
     color: var(--color-brand-600);
   }
+
+  @media (max-width:${({ theme }) => (theme.breakpoints.desktop)}) {
+  width:100%;
+}
 `;
 
 

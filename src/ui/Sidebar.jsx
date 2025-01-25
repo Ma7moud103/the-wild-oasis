@@ -6,6 +6,11 @@ import MainNav from './MainNav'
 const StyledSidebar = styled.aside`
     grid-row: 1/-1;
     background-color: var(--color-grey-0);
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+        display: none;
+
+    }
 `
 
 function Sidebar() {

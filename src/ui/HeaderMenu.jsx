@@ -5,13 +5,20 @@ import ButtonIcon from './ButtonIcon'
 import { useNavigate } from 'react-router-dom'
 import { FaUsers } from "react-icons/fa";
 import DarkModeToggle from './DarkModeToggle'
+import { CiMenuKebab } from "react-icons/ci";
+import { useDispatch } from 'react-redux'
+import { handleDisplayingMenu } from '../redux/UiSlice'
+
 const StyledHeaderMenu = styled.ul`
     display: flex;
     gap:.4rem;
 `
 
+
 function HeaderMenu() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
     return (
         <StyledHeaderMenu>
             <li>
@@ -23,7 +30,9 @@ function HeaderMenu() {
                 <DarkModeToggle />
             </li>
             <li>
-                <Logout />
+                <ButtonIcon onClick={() => dispatch(handleDisplayingMenu("toggle"))}>
+                    <CiMenuKebab />
+                </ButtonIcon>
             </li>
         </StyledHeaderMenu>
     )

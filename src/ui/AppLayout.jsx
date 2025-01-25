@@ -16,6 +16,16 @@ const StyledApp = styled.div`
     grid-template-rows: auto 1fr;
     height: 100vh;
 
+    /* @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    padding: 10px;
+    } */
+
+    @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    display: flex;
+    flex-direction:column;
+    height: 100vh;
+    }
+
 `
 const Container = styled.div`
     max-width: 110rem;

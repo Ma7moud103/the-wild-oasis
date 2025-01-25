@@ -1,7 +1,7 @@
 import supabase, { supabaseUrl } from "./supabase";
 
 export async function getCabins() {
-  const { data, error } = await supabase.from("cabins").select("*");
+  const { data, error } = await supabase.from("rooms").select("*");
 
   if (error) {
     console.error(error);
@@ -23,7 +23,7 @@ export async function createEditCabin(newCabin, id) {
     : `${supabaseUrl}/storage/v1/object/public/cabin-images/${imageName}`;
 
   // 1. Create/edit cabin
-  let query = supabase.from("cabins");
+  let query = supabase.from("rooms");
 
   // A) CREATE
   if (!id) query = query.insert([{ ...newCabin, image: imagePath }]);
@@ -47,7 +47,7 @@ export async function createEditCabin(newCabin, id) {
 
   // 3. Delete the cabin IF there was an error uplaoding image
   if (storageError) {
-    await supabase.from("cabins").delete().eq("id", data.id);
+    await supabase.from("rooms").delete().eq("id", data.id);
     console.error(storageError);
     throw new Error(
       "Cabin image could not be uploaded and the cabin was not created"

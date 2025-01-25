@@ -1,13 +1,15 @@
 
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
-
+import Cabins from "./Cabins";
+import Bookings from './Bookings'
 function Dashboard() {
   return (
-    <Row type="horizontal">
-      <Heading as="h1">Dashboard</Heading>
-      <p>TEST</p>
-    </Row>
+    <>
+
+      <Cabins />
+      <Bookings />
+    </>
   );
 }
 

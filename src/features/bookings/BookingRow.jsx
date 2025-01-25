@@ -48,10 +48,15 @@ function BookingRow({
     numGuests,
     totalPrice,
     status,
-    guests: { fullName: guestName, email },
-    cabins: { name: cabinName },
+    // guests: { fullName: guestName, email },
+    rooms: { name: cabinName },
   },
 }) {
+
+
+  // console.log(guestName)
+
+
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
@@ -67,8 +72,8 @@ function BookingRow({
       <Cabin>{cabinName}</Cabin>
 
       <Stacked>
-        <span>{guestName}</span>
-        <span>{email}</span>
+        <span>{"guestName"}</span>
+        <span>{"email"}</span>
       </Stacked>
 
       <Stacked>

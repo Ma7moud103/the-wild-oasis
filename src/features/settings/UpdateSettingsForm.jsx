@@ -7,15 +7,15 @@ import { UseEditSetting } from './UseEditSetting';
 function UpdateSettingsForm() {
 
   const { settings = {}, isLoading } = UseSettings()
-  console.log(settings)
+
+  if (isLoading) return <Spinner />
+
   const {
     minBookingLength,
     maxBookingLength,
     maxGuestsPerBooking,
     breakfastPrice
   } = settings
-  if (isLoading) return <Spinner />
-
 
 
   const { isUpdateing, updateSetting } = UseEditSetting()

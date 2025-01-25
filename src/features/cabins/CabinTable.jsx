@@ -1,13 +1,12 @@
 
-import styled from "styled-components";
 
-import Spinner from "../../ui/Spinner";
-import CabinRow from "./CabinRow";
-import { UseCabins } from "./UseCabins";
-import Table from "../../ui/Table";
-import Menus from "../../ui/Menus";
 import { useSearchParams } from "react-router-dom";
 import Empty from "../../ui/Empty";
+import Menus from "../../ui/Menus";
+import Spinner from "../../ui/Spinner";
+import Table from "../../ui/Table";
+import CabinRow from "./CabinRow";
+import { UseCabins } from "./UseCabins";
 
 
 
