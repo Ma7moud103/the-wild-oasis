@@ -14,6 +14,17 @@ const StyledHeaderMenu = styled.ul`
     gap:.4rem;
 `
 
+const Menu = styled.li`
+@media(min-width:${({ theme }) => theme.breakpoints.desktop}){
+    display: none;
+}
+`
+
+const StyledLogout = styled.li`
+@media(max-width:${({ theme }) => theme.breakpoints.desktop}){
+    display: none;
+}
+`
 
 function HeaderMenu() {
     const navigate = useNavigate()
@@ -29,11 +40,15 @@ function HeaderMenu() {
             <li>
                 <DarkModeToggle />
             </li>
-            <li>
+            <Menu>
                 <ButtonIcon onClick={() => dispatch(handleDisplayingMenu("toggle"))}>
                     <CiMenuKebab />
                 </ButtonIcon>
-            </li>
+            </Menu>
+            <StyledLogout>
+                <Logout />
+            </StyledLogout>
+
         </StyledHeaderMenu>
     )
 }

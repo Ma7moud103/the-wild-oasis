@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavList, StyledNavLink } from './MainNav'
 import { HiCalendarDays, HiHomeModern, HiOutlineCog6Tooth, HiOutlineHome, HiOutlineUsers } from 'react-icons/hi2'
 import { handleDisplayingMenu } from '../redux/UiSlice'
+import Logout from '../features/authentication/Logout'
 
 const StyledHeader = styled.header`
     background-color: var(--color-grey-0);
@@ -36,7 +37,8 @@ const Container = styled.div`
         gap: 0;
         
         /* this for disabled style */
-        max-height: ${({ isMenuOpened }) => (isMenuOpened ? "38rem" : "0%")};
+        max-height: ${({ isMenuOpened }) => (isMenuOpened ? "50rem" : "0%")};
+    
         transition: all 0.5s;
         border-bottom: 1px solid var(--color-grey-100);
     }
@@ -90,6 +92,10 @@ function Header() {
                             <span>Settings</span>
 
                         </StyledNavLink>
+                    </li>
+                    <li onClick={() => dispatch(handleDisplayingMenu(false))}>
+                        <Logout />
+                        <span>Logout</span>
                     </li>
 
                 </NavList>
