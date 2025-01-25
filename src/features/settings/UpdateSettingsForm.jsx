@@ -4,10 +4,12 @@ import Input from '../../ui/Input';
 import { UseSettings } from './UseSettings';
 import Spinner from '../../ui/Spinner'
 import { UseEditSetting } from './UseEditSetting';
+import { useState } from 'react';
 function UpdateSettingsForm() {
 
-  const { settings = {}, isLoading } = UseSettings()
+  // const { settings = {},  } = UseSettings()
 
+  const [isLoading, setisLoading] = useState(false)
   if (isLoading) return <Spinner />
 
   const {
@@ -15,7 +17,7 @@ function UpdateSettingsForm() {
     maxBookingLength,
     maxGuestsPerBooking,
     breakfastPrice
-  } = settings
+  } = {}
 
 
   const { isUpdateing, updateSetting } = UseEditSetting()
